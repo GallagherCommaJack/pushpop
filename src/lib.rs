@@ -37,7 +37,7 @@ type TlsStream = rustls::StreamOwned<rustls::ClientSession, TcpStream>;
 
 pub struct PopStream {
     pub is_authenticated: bool,
-    pub stream: TlsStream,
+    pub stream:           TlsStream,
 }
 
 impl PopStream {
@@ -46,7 +46,7 @@ impl PopStream {
         let owned = rustls::StreamOwned::new(sess, socket);
         PopStream {
             is_authenticated: false,
-            stream: owned,
+            stream:           owned,
         }
     }
 
@@ -59,7 +59,7 @@ impl PopStream {
         assert_eq!(captures.len(), 2);
         Ok(Stat {
             num_messages: parse_match!(captures, "msgs"),
-            size_octets: parse_match!(captures, "oct"),
+            size_octets:  parse_match!(captures, "oct"),
         })
     }
 
@@ -67,7 +67,7 @@ impl PopStream {
         let line = self.read_line();
         let captures = capture!(r"(?P<id>[\d]+) (?P<oct>[\d]+)", &line);
         Scan {
-            id: parse_match!(captures, "id"),
+            id:     parse_match!(captures, "id"),
             octets: parse_match!(captures, "oct"),
         }
     }
@@ -99,7 +99,7 @@ impl PopStream {
         resp_code!(resp);
         let captures = capture!(r"(?P<id>[\d]+) (?P<oct>[\d]+)", &resp.first_line);
         Ok(Scan {
-            id: parse_match!(captures, "id"),
+            id:     parse_match!(captures, "id"),
             octets: parse_match!(captures, "oct"),
         })
     }
@@ -196,27 +196,27 @@ impl PopStream {
 
 #[derive(Clone, Debug)]
 pub struct PopResponse {
-    pub success: bool,
+    pub success:    bool,
     pub first_line: String,
-    pub lines: Vec<String>,
+    pub lines:      Vec<String>,
 }
 
 #[derive(Clone, Debug)]
 pub struct Stat {
     num_messages: u64,
-    size_octets: u64,
+    size_octets:  u64,
 }
 
 #[derive(Clone, Debug)]
 pub struct List {
-    count: u64,
+    count:  u64,
     octets: u64,
-    scans: Vec<Scan>,
+    scans:  Vec<Scan>,
 }
 
 #[derive(Clone, Debug)]
 pub struct Scan {
-    id: u64,
+    id:     u64,
     octets: u64,
 }
 
