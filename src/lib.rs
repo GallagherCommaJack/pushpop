@@ -7,32 +7,6 @@ use std::{
     ops::Deref,
 };
 
-macro_rules! regex {
-    ($r:expr) => {
-        Regex::new($r).expect(womp!())
-    };
-}
-
-macro_rules! capture {
-    ($r:expr, $e:expr) => {
-        regex!($r).captures($e).expect(womp!())
-    };
-}
-
-macro_rules! resp_code {
-    ($r:ident) => {
-        if !$r.success {
-            return Err($r.first_line);
-        }
-    };
-}
-
-macro_rules! parse_match {
-    ($e:expr, $i:expr) => {
-        $e.name($i).expect(womp!()).as_str().parse().expect(womp!())
-    };
-}
-
 type TlsStream = rustls::StreamOwned<rustls::ClientSession, TcpStream>;
 
 pub struct PopStream {
