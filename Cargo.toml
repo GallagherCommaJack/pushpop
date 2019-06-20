@@ -3,8 +3,10 @@ name = "pushpop"
 version = "0.1.0"
 authors = ["theseriousadult <jack@gallabytes.com>"]
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = "A naive implementation of POP3 which should work for even loosely-compliant servers."
+documentation = "https://docs.rs/pushpop"
+repository = "https://github.com/GallagherCommaJack/pushpop"
+keywords = ["email", "pop3", "pop", "POP3", "POP"]
 
 [dependencies]
 rustls = "^0.15"
