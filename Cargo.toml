@@ -7,11 +7,12 @@ description = "A naive implementation of POP3 which should work for even loosely
 documentation = "https://docs.rs/pushpop"
 repository = "https://github.com/GallagherCommaJack/pushpop"
 keywords = ["email", "pop3", "pop", "POP3", "POP"]
+license = "MIT OR Apache-2.0"
 
 [dependencies]
 rustls = "^0.15"
 regex = "^1.1.7"
-mailparse = "^0.8"
+# mailparse = "^0.8"
 
 [dev-dependencies]
 mail-test-account = "0.1.1"
