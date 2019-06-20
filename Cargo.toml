@@ -10,5 +10,9 @@ edition = "2018"
 rustls = "^0.15"
 regex = "^1.1.7"
 mailparse = "^0.8"
-# snafu = "0.4.1"
-# failure = "0.1.5"
+
+[dev-dependencies]
+mail-test-account = "0.1.1"
+webpki = "0.19"
+webpki-roots = "0.16"
+untrusted = "0.6.2"
